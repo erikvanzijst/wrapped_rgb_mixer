@@ -19,7 +19,7 @@ async def test_wrapper(dut):
     dut.la_data_in <= 0
 
     # count up with encoder with project inactive
-    for i in range(clocks_per_phase * 2 *  255):
+    for _ in range(clocks_per_phase * 2 * 255):
         await encoder.update(1)
 
     # pause
@@ -35,7 +35,7 @@ async def test_wrapper(dut):
     await ClockCycles(dut.wb_clk_i, 1)
 
     # count up with encoder while project is active
-    for i in range(clocks_per_phase * 2 *  255):
+    for _ in range(clocks_per_phase * 2 * 255):
         await encoder.update(1)
 
     await ClockCycles(dut.wb_clk_i, 1000)
